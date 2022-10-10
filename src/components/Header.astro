@@ -1,0 +1,31 @@
+---
+import { Img } from "astro-imagetools/components"
+---
+
+<header class="container mx-auto py-12 flex justify-between">
+	<div class="text-white bg-gray-700 p-5">
+		<div class="flex">
+			<div class="mr-2">
+				<Img
+					alt="This is me, Raf"
+					placeholder="dominantColor"
+					src="/src/img/39D2D69B-1CA5-44C5-9B2A-4AE4017A3DED.jpg"
+					width={100}
+				/>
+			</div>
+			<div class="flex-col">
+				<h2 class="text-white text-4xl pb-2">RavMedia</h2>
+				<p>by Rafael Vidal: Software Engineer, Consultant</p>
+			</div>
+		</div>
+	</div>
+	<div class="flex-1 ml-20 text-right">
+		<a href="/" class="p-3">Home</a>
+		<span class="mr-3"></span>
+		<a href="/about" class="p-3">About</a>
+		<span class="mr-3"></span>
+		<a href="/projects" class="p-3">Projects</a>
+		<span class="mr-3"></span>
+		<a href="/contact" class="p-3">Contact</a>
+	</div>
+</header>
