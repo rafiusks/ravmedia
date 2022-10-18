@@ -1,9 +1,157 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro"
+import { Img } from "astro-imagetools/components"
+import TechPillJavaScript from "../components/Pills/TechPillJavaScript.astro"
+import TechPillCloud from "../components/Pills/TechPillCloud.astro"
+import TechPillPhp from "../components/Pills/TechPillPhp.astro"
+import TechPillTailwind from "../components/Pills/TechPillTailwind.astro"
+import Tech from "../components/Tech.astro"
+
+const techStack =
+	{
+        frontend: [
+            {
+                title: "React",
+                img: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+                pill: "TechPillJavaScript",
+            },
+            {
+                title: "Laravel",
+                img: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg",
+                pill: "TechPillJavaScript",
+            },
+            {
+                title: "Vue 2/3",
+                img: "https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg",
+                pill: "TechPillJavascript"
+            },
+            {
+                title: "NuxtJS",
+                img: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Nuxt_logo.svg",
+                pill: "TechPillJavascript"
+            },
+            {
+                title: "Tailwind CSS",
+                img: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
+                pill: "TechPillTailwind"
+            },
+        ],
+        backend: [
+        {
+                title: "Node.js",
+                img: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg",
+                pill: "TechPillJavaScript",
+            },
+            {
+                title: "Laravel",
+                img: "https://laravel.com/img/logomark.min.svg",
+                pill: "TechPillPhp",
+            },
+            {
+                title: "Symfony",
+                img: "https://seeklogo.com/images/S/symfony-logo-AA34C8FC16-seeklogo.com.png",
+                pill: "TechPillPhp"
+            },
+            {
+                title: "AWS",
+                img: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+                pill: "TechPillCloud"
+            },
+            {
+                title: "Azure",
+                img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg",
+                pill: "TechPillCloud"
+            },
+            {
+                title: "GCP",
+                img: "https://seeklogo.com/images/G/google-cloud-logo-ADE788217F-seeklogo.com.png",
+                pill: "TechPillCloud"
+            },
+        ],
+    }
 ---
 
 <Layout title="Rafael Vidal">
-	<main>
-		<h1>Welcome</h1>
+	<main class="container h-[80vh] mx-auto flex justify-between flex-col">
+		<div class="flex-grow text-center flex">
+			<h1 class="text-7xl m-auto">Hi there</h1>
+		</div>
+		<div class="text-right pb-20">
+			<p class="text-7xl m-8">&#8595;</p>
+		</div>
 	</main>
+	<section class="h-screen w-full bg-gray-200 text-black flex">
+		<div
+			class="container m-auto flex-col bg-white h-[95%] p-4 shadow-lg rounded snap-center snap-mandatory"
+		>
+			<div class="">
+				<h2 class="py-12 text-5xl">Software Engineering Technologies</h2>
+			</div>
+			<div class="relative mt-10 mb-8">
+				<img
+					class="w-full"
+					src="https://www.freecodecamp.org/news/content/images/2020/06/front-end-vs-back-end-engineer-2.jpg"
+					usemap="#image-map"
+				/>
+				<div class="absolute flex w-full h-full z-50 top-0 bg-blend-multiply">
+					<div class="w-[49%] h-full"></div>
+					<div class="flex-grow border-8 bg-white border-white"></div>
+					<div class="w-[49%] h-full"></div>
+				</div>
+			</div>
+			<div class="flex">
+				<div class="p-4 space-y-5 w-[49%]">
+					<div class="columns-2 space-y-5">
+
+                        { techStack.frontend?.map((tech) => (
+                            <Tech
+                                img={tech.img}
+                                title={tech.title}
+                                pill={tech.pill}
+                                >
+                            </Tech>
+                        )
+                        )}
+					</div>
+				</div>
+				<div class="flex-grow"></div>
+                <div class="p-4 space-y-5 w-[49%]">
+					<div class="columns-2 space-y-5">
+
+                        { techStack.backend?.map((tech) => (
+                            <Tech
+                                img={tech.img}
+                                title={tech.title}
+                                pill={tech.pill}
+                                >
+                            </Tech>
+                        )
+                        )}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="h-screen w-full bg-gray-700 text-white p-4 snap-center">
+		<section class="container mx-auto flex-col">
+			<div class="">
+				<h2 class="py-12 text-5xl">Leadership Skills</h2>
+			</div>
+			<div class="flex">
+				<div class="p-4 space-y-5 w-[49%]">
+					<Img
+						alt="Tech Lead"
+						placeholder="dominantColor"
+						src="/src/img/fy4cyjjlg8v21.jpeg"
+						width={600}
+					/>
+				</div>
+				<div class="flex-grow"></div>
+				<div class="p-4 space-y-5 w-[49%]">
+					<p>Continous work in progress</p>
+				</div>
+			</div>
+		</section>
+		<section></section>
+	</section>
 </Layout>
