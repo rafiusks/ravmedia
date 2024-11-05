@@ -1,74 +1,73 @@
 ---
-import Layout from "../layouts/Layout.astro"
-import { Img } from "astro-imagetools/components"
-import TechPillJavaScript from "../components/Pills/TechPillJavaScript.astro"
-import TechPillCloud from "../components/Pills/TechPillCloud.astro"
-import TechPillPhp from "../components/Pills/TechPillPhp.astro"
-import TechPillTailwind from "../components/Pills/TechPillTailwind.astro"
-import Tech from "../components/Tech.astro"
+import Layout from "../layouts/Layout.astro";
 
-const techStack =
-	{
-        frontend: [
-            {
-                title: "React",
-                img: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
-                pill: "TechPillJavaScript",
-            },
-            {
-                title: "Laravel",
-                img: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg",
-                pill: "TechPillJavaScript",
-            },
-            {
-                title: "Vue 2/3",
-                img: "https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg",
-                pill: "TechPillJavascript"
-            },
-            {
-                title: "NuxtJS",
-                img: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Nuxt_logo.svg",
-                pill: "TechPillJavascript"
-            },
-            {
-                title: "Tailwind CSS",
-                img: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
-                pill: "TechPillTailwind"
-            },
-        ],
-        backend: [
-        {
-                title: "Node.js",
-                img: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg",
-                pill: "TechPillJavaScript",
-            },
-            {
-                title: "Laravel",
-                img: "https://laravel.com/img/logomark.min.svg",
-                pill: "TechPillPhp",
-            },
-            {
-                title: "Symfony",
-                img: "https://seeklogo.com/images/S/symfony-logo-AA34C8FC16-seeklogo.com.png",
-                pill: "TechPillPhp"
-            },
-            {
-                title: "AWS",
-                img: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
-                pill: "TechPillCloud"
-            },
-            {
-                title: "Azure",
-                img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg",
-                pill: "TechPillCloud"
-            },
-            {
-                title: "GCP",
-                img: "https://seeklogo.com/images/G/google-cloud-logo-ADE788217F-seeklogo.com.png",
-                pill: "TechPillCloud"
-            },
-        ],
-    }
+import TechPillJavaScript from "../components/Pills/TechPillJavaScript.astro";
+import TechPillCloud from "../components/Pills/TechPillCloud.astro";
+import TechPillPhp from "../components/Pills/TechPillPhp.astro";
+import TechPillTailwind from "../components/Pills/TechPillTailwind.astro";
+import Tech from "../components/Tech.astro";
+
+const techStack = {
+	frontend: [
+		{
+			title: "React",
+			img: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+			pill: "TechPillJavaScript",
+		},
+		{
+			title: "Laravel",
+			img: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg",
+			pill: "TechPillJavaScript",
+		},
+		{
+			title: "Vue 2/3",
+			img: "https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg",
+			pill: "TechPillJavascript",
+		},
+		{
+			title: "NuxtJS",
+			img: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Nuxt_logo.svg",
+			pill: "TechPillJavascript",
+		},
+		{
+			title: "Tailwind CSS",
+			img: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
+			pill: "TechPillTailwind",
+		},
+	],
+	backend: [
+		{
+			title: "Node.js",
+			img: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg",
+			pill: "TechPillJavaScript",
+		},
+		{
+			title: "Laravel",
+			img: "https://laravel.com/img/logomark.min.svg",
+			pill: "TechPillPhp",
+		},
+		{
+			title: "Symfony",
+			img: "https://seeklogo.com/images/S/symfony-logo-AA34C8FC16-seeklogo.com.png",
+			pill: "TechPillPhp",
+		},
+		{
+			title: "AWS",
+			img: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+			pill: "TechPillCloud",
+		},
+		{
+			title: "Azure",
+			img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg",
+			pill: "TechPillCloud",
+		},
+		{
+			title: "GCP",
+			img: "https://seeklogo.com/images/G/google-cloud-logo-ADE788217F-seeklogo.com.png",
+			pill: "TechPillCloud",
+		},
+	],
+};
 ---
 
 <Layout title="Rafael Vidal">
@@ -139,7 +138,7 @@ const techStack =
 			</div>
 			<div class="flex">
 				<div class="p-4 space-y-5 w-[49%]">
-					<Img
+					<image
 						alt="Tech Lead"
 						placeholder="dominantColor"
 						src="/src/img/fy4cyjjlg8v21.jpeg"
