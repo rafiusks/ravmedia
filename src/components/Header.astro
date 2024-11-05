@@ -1,21 +1,42 @@
 ---
 // Get current path for active states
-const pathname = new URL(Astro.request.url).pathname;
-// Normalize the path (remove trailing slash except for root)
-const currentPath = pathname === "/" ? "/" : pathname.replace(/\/$/, "");
+const currentPath =
+	Astro.url.pathname === "/" ? "/" : Astro.url.pathname.replace(/\/$/, "");
 
-// Helper function to check if a path is active
 const isActive = (path: string) => {
 	if (path === "/") {
 		return currentPath === "/";
 	}
 	return currentPath.startsWith(path);
 };
+
+const navItems = [
+	{
+		path: "/",
+		label: "Home",
+		icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+	},
+	{
+		path: "/services",
+		label: "Services",
+		icon: "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+	},
+	{
+		path: "/contact",
+		label: "Contact",
+		icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+	},
+];
 ---
 
-<header class="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-sm border-b border-gray-100 md:block hidden" transition:persist>
-  <!-- Desktop Header -->
-  <div class="container mx-auto px-4">
+<!-- Skip link -->
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-primary-600 focus:rounded-lg">
+  Skip to main content
+</a>
+
+<!-- Desktop Header -->
+<header class="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-sm border-b border-gray-100 md:block hidden print:hidden">
+  <div class="mx-auto px-4 max-w-7xl">
     <div class="flex justify-between items-center h-16">
       <a href="/" class="flex items-center gap-3">
         <img
@@ -24,28 +45,35 @@ const isActive = (path: string) => {
           width={40}
           height={40}
           class="rounded-lg"
+          loading="eager"
+          decoding="async"
         />
         <h2 class="font-display text-lg font-semibold text-gray-900">RavMedia</h2>
       </a>
 
-      <nav class="flex items-center gap-6">
-        <a href="/" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
-          Home
-        </a>
-        <a href="/services" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
-          Services
-        </a>
-        <a href="/contact" class="text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors">
-          Contact Us
-        </a>
+      <nav class="flex items-center gap-6" aria-label="Main navigation">
+        {navItems.map(({ path, label }) => (
+          <a 
+            href={path}
+            class:list={[
+              "text-sm font-medium",
+              isActive(path) 
+                ? "text-primary-600 hover:text-primary-700" 
+                : "text-gray-600 hover:text-gray-900"
+            ]}
+            aria-current={isActive(path) ? "page" : undefined}
+          >
+            {label}
+          </a>
+        ))}
       </nav>
     </div>
   </div>
 </header>
 
 <!-- Mobile Top Bar -->
-<div class="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-sm border-b border-gray-100 md:hidden" transition:persist>
-  <div class="container mx-auto px-4">
+<div class="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-sm border-b border-gray-100 md:hidden print:hidden">
+  <div class="mx-auto px-4 max-w-7xl">
     <div class="flex items-center justify-between h-16">
       <a href="/" class="flex items-center gap-3">
         <img
@@ -54,11 +82,13 @@ const isActive = (path: string) => {
           width={32}
           height={32}
           class="rounded-lg"
+          loading="eager"
+          decoding="async"
         />
         <h2 class="font-display text-lg font-semibold text-gray-900">RavMedia</h2>
       </a>
       
-      <a href="/contact" class="text-xs font-medium px-3 py-1.5 bg-primary-50 text-primary-600 rounded-full hover:bg-primary-100 transition-colors">
+      <a href="/contact" class="text-xs font-medium px-3 py-1.5 bg-primary-50 text-primary-600 rounded-full hover:bg-primary-100">
         Get in Touch
       </a>
     </div>
@@ -66,123 +96,43 @@ const isActive = (path: string) => {
 </div>
 
 <!-- Mobile Bottom Navigation -->
-<nav class="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white border-t border-gray-100 bottom-nav" transition:persist>
-  <div class="container mx-auto px-2">
+<nav class="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white border-t border-gray-100 print:hidden" aria-label="Mobile navigation">
+  <div class="mx-auto px-2 max-w-7xl">
     <div class="flex items-center justify-around h-16">
-      <a 
-        href="/" 
-        class:list={[
-          "flex flex-col items-center gap-1 py-2 px-4 relative group transition-colors",
-          isActive("/") ? "text-primary-600" : "text-gray-600 hover:text-gray-900"
-        ]}
-        aria-current={isActive("/") ? "page" : undefined}
-      >
-        <div class="relative">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-          </svg>
-          
-          <!-- Active pill background -->
-          <div class="absolute -inset-3 bg-primary-50 rounded-xl scale-0 opacity-0 
-                      transition-all duration-200 ease-out -z-10
-                      group-aria-[current=page]:scale-100 group-aria-[current=page]:opacity-100">
+      {navItems.map(({ path, label, icon }) => (
+        <a 
+          href={path}
+          class:list={[
+            "flex flex-col items-center gap-1 py-2 px-4 relative",
+            isActive(path) ? "text-primary-600" : "text-gray-600 hover:text-gray-900"
+          ]}
+          aria-current={isActive(path) ? "page" : undefined}
+        >
+          <div class="relative">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icon}/>
+            </svg>
+            
+            {isActive(path) && (
+              <>
+                <div class="absolute -inset-3 bg-primary-50 rounded-xl -z-10"></div>
+                <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary-600"></div>
+              </>
+            )}
           </div>
-          
-          <!-- Bottom dot indicator -->
-          <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary-600 
-                      scale-0 opacity-0 transition-all duration-200 ease-out
-                      group-aria-[current=page]:scale-100 group-aria-[current=page]:opacity-100">
-          </div>
-        </div>
-        <span class:list={[
-          "text-xs font-medium transition-all duration-200 ease-out",
-          currentPath === "/" ? "transform -translate-y-0.5" : ""
-        ]}>
-          Home
-        </span>
-      </a>
-
-      <a 
-        href="/services" 
-        class:list={[
-          "flex flex-col items-center gap-1 py-2 px-4 relative group transition-colors",
-          isActive("/services") ? "text-primary-600" : "text-gray-600 hover:text-gray-900"
-        ]}
-        aria-current={isActive("/services") ? "page" : undefined}
-      >
-        <div class="relative">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-          </svg>
-          
-          <!-- Active pill background -->
-          <div class="absolute -inset-3 bg-primary-50 rounded-xl scale-0 opacity-0 
-                      transition-all duration-200 ease-out -z-10
-                      group-aria-[current=page]:scale-100 group-aria-[current=page]:opacity-100">
-          </div>
-          
-          <!-- Bottom dot indicator -->
-          <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary-600 
-                      scale-0 opacity-0 transition-all duration-200 ease-out
-                      group-aria-[current=page]:scale-100 group-aria-[current=page]:opacity-100">
-          </div>
-        </div>
-        <span class:list={[
-          "text-xs font-medium transition-all duration-200 ease-out",
-          currentPath === "/services" ? "transform -translate-y-0.5" : ""
-        ]}>
-          Services
-        </span>
-      </a>
-
-      <a 
-        href="/contact" 
-        class:list={[
-          "flex flex-col items-center gap-1 py-2 px-4 relative group transition-colors",
-          isActive("/contact") ? "text-primary-600" : "text-gray-600 hover:text-gray-900"
-        ]}
-        aria-current={isActive("/contact") ? "page" : undefined}
-      >
-        <div class="relative">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-          </svg>
-          
-          <!-- Active pill background -->
-          <div class="absolute -inset-3 bg-primary-50 rounded-xl scale-0 opacity-0 
-                      transition-all duration-200 ease-out -z-10
-                      group-aria-[current=page]:scale-100 group-aria-[current=page]:opacity-100">
-          </div>
-          
-          <!-- Bottom dot indicator -->
-          <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary-600 
-                      scale-0 opacity-0 transition-all duration-200 ease-out
-                      group-aria-[current=page]:scale-100 group-aria-[current=page]:opacity-100">
-          </div>
-        </div>
-        <span class:list={[
-          "text-xs font-medium transition-all duration-200 ease-out",
-          currentPath === "/contact" ? "transform -translate-y-0.5" : ""
-        ]}>
-          Contact
-        </span>
-      </a>
+          <span class="text-xs font-medium">
+            {label}
+          </span>
+        </a>
+      ))}
     </div>
   </div>
 </nav>
 
 <style>
-  /* Add padding to main content to account for fixed headers/footers */
   :global(body) {
     padding-top: max(4rem, env(safe-area-inset-top));
     padding-bottom: max(4rem, env(safe-area-inset-bottom));
-  }
-
-  .bottom-nav {
-    padding-bottom: env(safe-area-inset-bottom);
   }
 
   @media (min-width: 768px) {
@@ -190,89 +140,10 @@ const isActive = (path: string) => {
       padding-bottom: 0;
     }
   }
+
+  @media print {
+    :global(body) {
+      padding: 0;
+    }
+  }
 </style>
-
-<script>
-  document.addEventListener('astro:page-load', () => {
-    const currentPath = window.location.pathname === "/" 
-      ? "/" 
-      : window.location.pathname.replace(/\/$/, "");
-
-    const isActive = (path) => {
-      if (path === "/") {
-        return currentPath === "/";
-      }
-      return currentPath.startsWith(path);
-    };
-
-    // Update all navigation links with staggered timing
-    document.querySelectorAll('nav a').forEach((link, index) => {
-      const path = link.getAttribute('href');
-      const pillBg = link.querySelector('.absolute.-inset-3');
-      const dotIndicator = link.querySelector('.absolute.-bottom-4');
-      const label = link.querySelector('span');
-
-      // Add a small stagger effect
-      setTimeout(() => {
-        if (path && isActive(path)) {
-          // Set active state
-          link.setAttribute('aria-current', 'page');
-          link.classList.add('text-primary-600');
-          link.classList.remove('text-gray-600', 'hover:text-gray-900');
-          
-          // Show active indicators with sequence
-          requestAnimationFrame(() => {
-            pillBg?.classList.add('scale-100', 'opacity-100');
-            setTimeout(() => {
-              dotIndicator?.classList.add('scale-100', 'opacity-100');
-            }, 50);
-            setTimeout(() => {
-              label?.classList.add('transform', '-translate-y-0.5');
-            }, 100);
-          });
-        } else {
-          // Remove active state immediately
-          link.removeAttribute('aria-current');
-          link.classList.remove('text-primary-600');
-          link.classList.add('text-gray-600', 'hover:text-gray-900');
-          
-          // Hide active indicators
-          pillBg?.classList.remove('scale-100', 'opacity-100');
-          dotIndicator?.classList.remove('scale-100', 'opacity-100');
-          label?.classList.remove('transform', '-translate-y-0.5');
-        }
-      }, index * 50); // Stagger each link's update
-    });
-  });
-
-  // Clean up active states during transition
-  document.addEventListener('astro:before-swap', () => {
-    // Quickly fade out all active states
-    document.querySelectorAll('nav a').forEach(link => {
-      const pillBg = link.querySelector('.absolute.-inset-3');
-      const dotIndicator = link.querySelector('.absolute.-bottom-4');
-      const label = link.querySelector('span');
-      
-      // Add quick fade-out transition
-      [pillBg, dotIndicator, label].forEach(el => {
-        if (el) {
-          el.style.transition = 'all 150ms ease-in';
-        }
-      });
-      
-      // Remove active classes
-      pillBg?.classList.remove('scale-100', 'opacity-100');
-      dotIndicator?.classList.remove('scale-100', 'opacity-100');
-      label?.classList.remove('transform', '-translate-y-0.5');
-      
-      // Reset transitions after cleanup
-      setTimeout(() => {
-        [pillBg, dotIndicator, label].forEach(el => {
-          if (el) {
-            el.style.transition = '';
-          }
-        });
-      }, 150);
-    });
-  });
-</script>

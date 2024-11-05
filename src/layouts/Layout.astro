@@ -1,80 +1,62 @@
 ---
-import { ViewTransitions } from "astro:transitions";
 import Header from "../components/Header.astro";
-import Footer from "../components/Footer";
 
 interface Props {
 	title: string;
+	description?: string;
+	image?: string;
 }
 
-const { title } = Astro.props;
+const {
+	title,
+	description = "RavMedia - Digital Solutions",
+	image = "/social-image.jpg",
+} = Astro.props;
+
+// Only create canonical URL if site is defined
+const canonicalURL = Astro.site
+	? new URL(Astro.url.pathname, Astro.site)
+	: Astro.url.pathname;
 ---
 
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="h-full antialiased">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO -->
 		<title>{title}</title>
+		<meta name="description" content={description} />
+		{Astro.site && <link rel="canonical" href={canonicalURL} />}
+		
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		{Astro.site && <meta property="og:url" content={canonicalURL} />}
+		<meta property="og:image" content={image} />
+		
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={image} />
+		
+		<!-- Favicon -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<meta name="theme-color" content="#ffffff" />
 
-		<!-- Preload fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
-
-		<ViewTransitions />
-
-		<style is:global>
-			/* Base font settings */
-			:root {
-				--font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-				--font-display: 'Manrope', var(--font-sans);
-			}
-
-			html {
-				font-family: var(--font-sans);
-				-webkit-font-smoothing: antialiased;
-				-moz-osx-font-smoothing: grayscale;
-				scroll-behavior: smooth;
-			}
-
-			h1, h2, h3, h4, h5, h6 {
-				font-family: var(--font-display);
-			}
-
-			/* Your existing global styles */
-			.prose {
-				max-width: 65ch;
-			}
-
-			.prose p {
-				margin-bottom: 1.5em;
-			}
-
-			/* Add to your global styles */
-			.fade-in-up {
-				animation: fadeInUp 0.5s ease-out;
-			}
-
-			@keyframes fadeInUp {
-				from {
-					opacity: 0;
-					transform: translateY(20px);
-				}
-				to {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-		</style>
+		<!-- Preload critical assets -->
+		<link rel="preload" href="/logo.jpg" as="image" />
 	</head>
-	<body class="bg-white text-gray-900 antialiased">
+	<body class="h-full">
 		<Header />
-		<main class="flex-1" transition:animate="slide">
+		<main id="main">
 			<slot />
 		</main>
-		<Footer />
 	</body>
 </html>
