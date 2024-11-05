@@ -1,0 +1,162 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/ui/Button.astro";
+
+const services = [
+	{
+		title: "Custom Enterprise Software",
+		description:
+			"Tailored solutions that align with your business processes and scale with your growth.",
+		icon: "💻",
+		category: "Development",
+		deliverables: [
+			"Scalable Architecture Design",
+			"Custom Software Development",
+			"Integration Services",
+			"Maintenance & Support",
+		],
+	},
+	{
+		title: "Digital Transformation",
+		description:
+			"Strategic implementation of modern solutions to revolutionize your business operations.",
+		icon: "🚀",
+		category: "Strategy",
+		deliverables: [
+			"Digital Roadmap",
+			"Process Optimization",
+			"Technology Migration",
+			"Change Management",
+		],
+	},
+	{
+		title: "Technical Consulting",
+		description:
+			"Expert guidance for your technology infrastructure and strategic decisions.",
+		icon: "💡",
+		category: "Consulting",
+		deliverables: [
+			"Technical Assessment",
+			"Architecture Review",
+			"Security Audit",
+			"Performance Analysis",
+		],
+	},
+];
+---
+
+<Layout title="Services - RavMedia">
+	<main class="bg-white">
+		<!-- Hero Section -->
+		<section class="bg-gradient-to-b from-gray-50 to-white py-16">
+			<div class="container mx-auto px-4">
+				<div class="max-w-3xl mx-auto text-center">
+					<h1 class="font-display text-4xl md:text-5xl font-semibold tracking-tight text-gray-900 mb-4">
+						Our Services
+					</h1>
+					<p class="text-xl text-gray-600">
+						Enterprise solutions for modern businesses
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Services Grid -->
+		<section class="py-8 md:py-16">
+			<div class="container mx-auto px-4">
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+					{services.map(service => (
+						<div class="group hover:shadow-lg transition-all duration-300 rounded-xl overflow-hidden">
+							<div class="bg-primary-50 p-6 md:p-8">
+								<span class="text-2xl mb-4 block">{service.icon}</span>
+								<div class="text-sm font-medium text-primary-600 mb-4">
+									{service.category}
+								</div>
+								<h2 class="font-display text-xl md:text-2xl font-semibold text-gray-900 mb-3">
+									{service.title}
+								</h2>
+								<p class="text-gray-600 text-sm md:text-base">
+									{service.description}
+								</p>
+							</div>
+							
+							<div class="p-6 md:p-8 bg-white border border-gray-100">
+								<h3 class="font-display text-lg font-semibold mb-4">What you get:</h3>
+								<ul class="space-y-3 text-sm md:text-base">
+									{service.deliverables.map(item => (
+										<li class="flex items-start text-gray-700">
+											<svg class="w-5 h-5 text-primary-600 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+											</svg>
+											<span>{item}</span>
+										</li>
+									))}
+								</ul>
+								<div class="mt-6 pt-6 border-t border-gray-100">
+									<Button href="/contact" variant="outline" class="w-full justify-center">
+										Learn More
+									</Button>
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- Process Section -->
+		<section class="py-8 md:py-16 bg-gray-50">
+			<div class="container mx-auto px-4">
+				<div class="max-w-3xl mx-auto text-center mb-8 md:mb-12">
+					<h2 class="font-display text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
+						Our Process
+					</h2>
+					<p class="text-gray-600 text-sm md:text-lg">
+						How we deliver exceptional results
+					</p>
+				</div>
+
+				<div class="max-w-4xl mx-auto">
+					<div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+						{[
+							{ step: "1", title: "Discovery", desc: "Understanding your needs" },
+							{ step: "2", title: "Strategy", desc: "Planning the solution" },
+							{ step: "3", title: "Development", desc: "Building & testing" },
+							{ step: "4", title: "Delivery", desc: "Implementation & support" }
+						].map(phase => (
+							<div class="text-center">
+								<div class="w-10 h-10 md:w-12 md:h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
+									<span class="text-primary-600 font-semibold text-sm md:text-base">{phase.step}</span>
+								</div>
+								<h3 class="font-display font-semibold text-sm md:text-base mb-1 md:mb-2">{phase.title}</h3>
+								<p class="text-gray-600 text-xs md:text-sm">{phase.desc}</p>
+							</div>
+						))}
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA Section -->
+		<section class="bg-primary-50 py-16">
+			<div class="container mx-auto px-4">
+				<div class="max-w-3xl mx-auto text-center">
+					<h2 class="font-display text-3xl font-semibold text-gray-900 mb-4">
+						Ready to Transform Your Business?
+					</h2>
+					<p class="text-lg text-gray-600 mb-8">
+						Let's discuss how our services can help you achieve your goals.
+					</p>
+					<div class="flex flex-wrap gap-4 justify-center">
+						<Button href="/contact" variant="primary" size="lg">
+							Schedule a Consultation
+						</Button>
+						<Button href="/about" variant="outline" size="lg">
+							Learn About Us
+						</Button>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout> 

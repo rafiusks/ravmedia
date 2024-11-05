@@ -1,48 +1,212 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Button from "../components/ui/Button.astro";
+
+const services = [
+	{
+		title: "Custom Enterprise Software",
+		description:
+			"Tailored solutions that align with your business processes and scale with your growth.",
+		icon: "💻",
+	},
+	{
+		title: "Digital Transformation",
+		description:
+			"Guide your business through technological evolution with strategic implementation of modern solutions.",
+		icon: "🚀",
+	},
+	{
+		title: "Technical Consulting",
+		description:
+			"Strategic guidance to help you make informed decisions about your technology infrastructure.",
+		icon: "💡",
+	},
+];
 ---
 
-<Layout title="Rafael Vidal">
+<Layout title="RavMedia - Enterprise Software Solutions">
 	<main>
-		<!-- Hero Section with purple gradient -->
-		<div class="min-h-[80vh] bg-gradient-to-br from-zinc-900 via-purple-900/20 to-zinc-900">
-			<div class="container mx-auto px-4 h-full flex flex-col justify-between">
-				<div class="flex-grow flex items-center">
-					<div class="max-w-3xl fade-in">
-						<h1 class="text-7xl font-display tracking-tight mb-6">Hi there</h1>
-						<p class="text-2xl text-gray-300">Software Engineer & Consultant</p>
+		<!-- Hero Section -->
+		<section class="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+			<!-- Decorative background elements -->
+			<div class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,transparent)]"></div>
+			
+			<div class="container mx-auto px-4 py-24 md:py-32">
+				<div class="max-w-4xl mx-auto text-center">
+					<h1 class="font-display text-4xl md:text-6xl font-semibold tracking-tight text-gray-900 mb-6">
+						Transform Your Business with Modern Software Solutions
+					</h1>
+					<p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto">
+						We help enterprises build scalable, efficient, and future-proof digital solutions.
+					</p>
+					<div class="flex flex-wrap gap-4 justify-center">
+						<Button href="/contact" variant="primary" size="lg">
+							Schedule a Consultation
+						</Button>
+						<Button href="/services" variant="outline" size="lg">
+							Explore Our Services
+						</Button>
 					</div>
-				</div>
-				<div class="text-right pb-20">
-					<p class="text-7xl m-8">&#8595;</p>
 				</div>
 			</div>
-		</div>
+		</section>
 
-		<!-- Tech Section -->
-		<section class="h-screen w-full bg-gray-200 text-black flex">
-			<div class="container m-auto flex-col bg-white h-[95%] p-4 shadow-lg rounded snap-center snap-mandatory">
-				<div>
-					<h2 class="py-12 text-5xl font-display tracking-tight">
-						Software Engineering Technologies
+		<!-- Services Preview -->
+		<section class="py-20 bg-white">
+			<div class="container mx-auto px-4">
+				<div class="max-w-3xl mx-auto text-center mb-16">
+					<h2 class="font-display text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 mb-4">
+						Enterprise Solutions
 					</h2>
+					<p class="text-xl text-gray-600">
+						Comprehensive software solutions tailored to meet your business needs.
+					</p>
 				</div>
-				<div class="relative mt-10 mb-8">
-					<img
-						class="w-full"
-						src="https://www.freecodecamp.org/news/content/images/2020/06/front-end-vs-back-end-engineer-2.jpg"
-						usemap="#image-map"
-					/>
-					<div class="absolute flex w-full h-full z-50 top-0 bg-blend-multiply">
-						<div class="w-[49%] h-full"></div>
-						<div class="flex-grow border-8 bg-white border-white"></div>
-						<div class="w-[49%] h-full"></div>
+
+				<div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+					{services.map(service => (
+						<div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100">
+							<span class="text-3xl mb-4 block">{service.icon}</span>
+							<h3 class="font-display text-xl font-semibold text-gray-900 mb-3">
+								{service.title}
+							</h3>
+							<p class="text-gray-600">
+								{service.description}
+							</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- Why Choose Us Section -->
+		<section class="py-20 bg-gray-50">
+			<div class="container mx-auto px-4">
+				<div class="max-w-3xl mx-auto text-center mb-16">
+					<h2 class="font-display text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 mb-4">
+						Why Choose RavMedia
+					</h2>
+					<p class="text-xl text-gray-600">
+						We bring enterprise expertise with a modern approach to software development.
+					</p>
+				</div>
+
+				<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+					<div class="bg-white p-6 rounded-lg shadow-sm">
+						<div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+							<svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+							</svg>
+						</div>
+						<h3 class="font-display text-lg font-semibold mb-2">Fast Delivery</h3>
+						<p class="text-gray-600">Rapid development without compromising quality</p>
+					</div>
+
+					<div class="bg-white p-6 rounded-lg shadow-sm">
+						<div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+							<svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+							</svg>
+						</div>
+						<h3 class="font-display text-lg font-semibold mb-2">Enterprise Security</h3>
+						<p class="text-gray-600">Built-in security at every level</p>
+					</div>
+
+					<div class="bg-white p-6 rounded-lg shadow-sm">
+						<div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+							<svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+							</svg>
+						</div>
+						<h3 class="font-display text-lg font-semibold mb-2">Scalable Solutions</h3>
+						<p class="text-gray-600">Architecture that grows with your business</p>
+					</div>
+
+					<div class="bg-white p-6 rounded-lg shadow-sm">
+						<div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+							<svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+							</svg>
+						</div>
+						<h3 class="font-display text-lg font-semibold mb-2">Customizable</h3>
+						<p class="text-gray-600">Tailored to your specific needs</p>
 					</div>
 				</div>
-				<div class="flex">
-					<div class="p-4 space-y-5 w-[49%]">
-						<div class="columns-2 space-y-5">
-							<!-- Your existing content -->
+			</div>
+		</section>
+
+		<!-- Technologies Section -->
+		<section class="py-20 bg-white">
+			<div class="container mx-auto px-4">
+				<div class="max-w-3xl mx-auto text-center mb-16">
+					<h2 class="font-display text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 mb-4">
+						Technologies We Use
+					</h2>
+					<p class="text-xl text-gray-600">
+						Modern tools for modern solutions
+					</p>
+				</div>
+
+				<div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+					<div class="flex items-center justify-center p-4">
+						<img src="/tech/aws.svg" alt="AWS" class="h-12 opacity-75 hover:opacity-100 transition-opacity" />
+					</div>
+					<div class="flex items-center justify-center p-4">
+						<img src="/tech/azure.svg" alt="Azure" class="h-12 opacity-75 hover:opacity-100 transition-opacity" />
+					</div>
+					<!-- Add more technology logos -->
+				</div>
+			</div>
+		</section>
+
+		<!-- Testimonial Section -->
+		<section class="py-20 bg-gray-50">
+			<div class="container mx-auto px-4">
+				<div class="max-w-3xl mx-auto text-center">
+					<blockquote class="text-2xl font-display text-gray-900 mb-8">
+						"RavMedia transformed our legacy systems into a modern, scalable platform that helped us grow our business significantly."
+					</blockquote>
+					<cite class="text-gray-600 not-italic">
+						<div class="font-semibold">John Smith</div>
+						<div class="text-sm">CTO, Enterprise Company</div>
+					</cite>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA Section -->
+		<section class="bg-primary-50 py-20">
+			<div class="container mx-auto px-4">
+				<div class="max-w-4xl mx-auto text-center">
+					<h2 class="font-display text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 mb-6">
+						Ready to Transform Your Business?
+					</h2>
+					<p class="text-xl text-gray-600 mb-8">
+						Let's discuss how we can help you achieve your digital transformation goals.
+					</p>
+					<Button href="/contact" variant="primary" size="lg">
+						Get Started
+					</Button>
+				</div>
+			</div>
+		</section>
+
+		<!-- Trust Indicators -->
+		<section class="py-20 bg-white">
+			<div class="container mx-auto px-4">
+				<div class="max-w-6xl mx-auto">
+					<div class="grid md:grid-cols-3 gap-12 text-center">
+						<div>
+							<div class="text-4xl font-display font-bold text-primary-600 mb-2">10+</div>
+							<div class="text-gray-600">Years Experience</div>
+						</div>
+						<div>
+							<div class="text-4xl font-display font-bold text-primary-600 mb-2">50+</div>
+							<div class="text-gray-600">Enterprise Clients</div>
+						</div>
+						<div>
+							<div class="text-4xl font-display font-bold text-primary-600 mb-2">100%</div>
+							<div class="text-gray-600">Client Satisfaction</div>
 						</div>
 					</div>
 				</div>

@@ -1,8 +1,9 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.astro";
-export interface Props {
+import Footer from "../components/Footer";
+
+interface Props {
 	title: string;
 }
 
@@ -13,95 +14,37 @@ const { title } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+		<!-- Preload fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+
+		<ViewTransitions />
+
 		<style is:global>
-			/* Single, subtle fade-in animation */
-			@keyframes subtleFadeIn {
-				from { opacity: 0; }
-				to { opacity: 1; }
-			}
-
-			.fade-in {
-				animation: subtleFadeIn 0.4s ease-out forwards;
-			}
-
-			/* Custom Scrollbar */
-			::-webkit-scrollbar {
-				width: 10px;
-			}
-
-			::-webkit-scrollbar-track {
-				background: #18181b;
-			}
-
-			::-webkit-scrollbar-thumb {
-				background: #3f3f46;
-				border-radius: 5px;
-			}
-
-			::-webkit-scrollbar-thumb:hover {
-				background: #52525b;
-			}
-
-			/* Smooth Scrolling */
-			html {
-				scroll-behavior: smooth;
-			}
-
-			/* Selection Color */
-			::selection {
-				background: rgba(147, 51, 234, 0.3);
-				color: white;
-			}
-
-			/* Modern typography base styles */
+			/* Base font settings */
 			:root {
-				--font-body: 'Inter', system-ui, sans-serif;
-				--font-display: 'Manrope', system-ui, sans-serif;
+				--font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+				--font-display: 'Manrope', var(--font-sans);
 			}
 
 			html {
-				font-family: var(--font-body);
+				font-family: var(--font-sans);
 				-webkit-font-smoothing: antialiased;
 				-moz-osx-font-smoothing: grayscale;
+				scroll-behavior: smooth;
 			}
 
 			h1, h2, h3, h4, h5, h6 {
 				font-family: var(--font-display);
-				font-weight: 600;
-				letter-spacing: -0.02em;
-				line-height: 1.2;
 			}
 
-			/* Add transition styles */
-			::view-transition-old(root),
-			::view-transition-new(root) {
-				animation: none;
-				mix-blend-mode: normal;
-			}
-
-			/* Add a subtle fade for the content */
-			::view-transition-old(content) {
-				animation: fade-out 0.3s ease-out both;
-			}
-			::view-transition-new(content) {
-				animation: fade-in 0.3s ease-out both;
-			}
-
-			@keyframes fade-in {
-				from { opacity: 0; }
-				to { opacity: 1; }
-			}
-
-			@keyframes fade-out {
-				from { opacity: 1; }
-				to { opacity: 0; }
-			}
-
-			/* Typography utilities */
+			/* Your existing global styles */
 			.prose {
 				max-width: 65ch;
 			}
@@ -110,42 +53,24 @@ const { title } = Astro.props;
 				margin-bottom: 1.5em;
 			}
 
-			.prose a {
-				color: #60A5FA;
-				text-decoration: underline;
-				text-decoration-thickness: 1px;
-				text-underline-offset: 2px;
-				transition: color 0.2s;
+			/* Add to your global styles */
+			.fade-in-up {
+				animation: fadeInUp 0.5s ease-out;
 			}
 
-			.prose a:hover {
-				color: #93C5FD;
-			}
-
-			/* Improved link underlines */
-			.fancy-link {
-				background-image: linear-gradient(currentColor, currentColor);
-				background-position: 0% 100%;
-				background-repeat: no-repeat;
-				background-size: 0% 1px;
-				transition: background-size 0.3s;
-			}
-
-			.fancy-link:hover {
-				background-size: 100% 1px;
-			}
-
-			/* Text balance for better headlines */
-			.balanced-text {
-				text-wrap: balance;
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
 			}
 		</style>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
-		<ViewTransitions />
 	</head>
-	<body class="bg-zinc-900 text-white antialiased flex flex-col font-serif">
+	<body class="bg-white text-gray-900 antialiased">
 		<Header />
 		<main class="flex-1" transition:animate="slide">
 			<slot />

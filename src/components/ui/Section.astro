@@ -13,12 +13,12 @@ const { title, subtitle, class: className = "" } = Astro.props;
     {(title || subtitle) && (
       <div class="max-w-3xl mx-auto mb-16">
         {title && (
-          <h2 class="text-4xl font-bold mb-4 animate-fade-in">
+          <h2 class="text-4xl font-display text-gray-900 tracking-tight mb-4 animate-fade-in">
             {title}
           </h2>
         )}
         {subtitle && (
-          <p class="text-xl text-gray-400 animate-fade-in delay-100">
+          <p class="text-xl text-gray-600 animate-fade-in delay-100">
             {subtitle}
           </p>
         )}

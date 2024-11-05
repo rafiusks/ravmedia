@@ -20,9 +20,18 @@ const gaps = {
 ---
 
 <div class:list={[
-  "grid grid-cols-1",
+  "grid grid-cols-1 gap-8",
   cols[columns],
   gaps[gap]
 ]}>
   <slot />
-</div> 
+</div>
+
+<style>
+  .grid > :global(*) {
+    @apply transition-all duration-300;
+  }
+  .grid > :global(*:hover) {
+    @apply shadow-lg -translate-y-1;
+  }
+</style> 

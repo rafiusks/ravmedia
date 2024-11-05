@@ -18,9 +18,10 @@ const baseStyles =
 
 const variants = {
 	primary:
-		"bg-white text-gray-900 hover:bg-gray-100 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]",
-	secondary: "bg-gray-800 text-white hover:bg-gray-700",
-	outline: "border border-white/30 text-white hover:bg-white/10",
+		"bg-primary-600 text-white hover:bg-primary-700 shadow-sm hover:shadow-md",
+	secondary:
+		"bg-gray-100 text-gray-900 hover:bg-gray-200 shadow-sm hover:shadow-md",
+	outline: "border-2 border-primary-200 text-primary-700 hover:bg-primary-50",
 };
 
 const sizes = {
@@ -32,11 +33,9 @@ const sizes = {
 const Element = href ? "a" : "button";
 ---
 
-<button
-  class="px-4 py-2 rounded-lg font-medium 
-         bg-gray-800 text-white 
-         hover:bg-gray-700 
-         transition-colors duration-200"
+<Element
+	href={href}
+	class:list={[baseStyles, variants[variant], sizes[size], className]}
 >
-  <slot />
-</button> 
+	<slot />
+</Element> 

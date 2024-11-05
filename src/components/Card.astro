@@ -9,22 +9,15 @@ interface Props {
 const { title, description, icon, href } = Astro.props;
 ---
 
-<div class="group relative bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700/50 
-            hover:border-gray-600/50 transition-all duration-300 overflow-hidden">
-  <!-- Glass effect overlay -->
-  <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-white/0 pointer-events-none"></div>
-  
+<div class="group relative bg-white rounded-xl border border-gray-200 
+            hover:border-primary-200 hover:shadow-lg transition-all duration-300">
   <div class="p-6">
     {icon && <span class="text-2xl mb-4 block">{icon}</span>}
-    <h3 class="text-xl font-semibold mb-2 group-hover:text-white transition-colors">
+    <h3 class="text-xl font-semibold text-gray-900 mb-2">
       {href ? <a href={href}>{title}</a> : title}
     </h3>
-    <p class="text-gray-400 group-hover:text-gray-300 transition-colors">
+    <p class="text-gray-600">
       {description}
     </p>
   </div>
-
-  <!-- Hover effect -->
-  <div class="absolute inset-0 border-2 border-white/0 group-hover:border-white/10 rounded-xl 
-              transition-all duration-300 pointer-events-none"></div>
 </div> 
