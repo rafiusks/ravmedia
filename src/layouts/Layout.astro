@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.astro";
 export interface Props {
@@ -16,12 +17,139 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<style is:global>
+			/* Single, subtle fade-in animation */
+			@keyframes subtleFadeIn {
+				from { opacity: 0; }
+				to { opacity: 1; }
+			}
+
+			.fade-in {
+				animation: subtleFadeIn 0.4s ease-out forwards;
+			}
+
+			/* Custom Scrollbar */
+			::-webkit-scrollbar {
+				width: 10px;
+			}
+
+			::-webkit-scrollbar-track {
+				background: #18181b;
+			}
+
+			::-webkit-scrollbar-thumb {
+				background: #3f3f46;
+				border-radius: 5px;
+			}
+
+			::-webkit-scrollbar-thumb:hover {
+				background: #52525b;
+			}
+
+			/* Smooth Scrolling */
+			html {
+				scroll-behavior: smooth;
+			}
+
+			/* Selection Color */
+			::selection {
+				background: rgba(147, 51, 234, 0.3);
+				color: white;
+			}
+
+			/* Modern typography base styles */
+			:root {
+				--font-body: 'Inter', system-ui, sans-serif;
+				--font-display: 'Manrope', system-ui, sans-serif;
+			}
+
+			html {
+				font-family: var(--font-body);
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+
+			h1, h2, h3, h4, h5, h6 {
+				font-family: var(--font-display);
+				font-weight: 600;
+				letter-spacing: -0.02em;
+				line-height: 1.2;
+			}
+
+			/* Add transition styles */
+			::view-transition-old(root),
+			::view-transition-new(root) {
+				animation: none;
+				mix-blend-mode: normal;
+			}
+
+			/* Add a subtle fade for the content */
+			::view-transition-old(content) {
+				animation: fade-out 0.3s ease-out both;
+			}
+			::view-transition-new(content) {
+				animation: fade-in 0.3s ease-out both;
+			}
+
+			@keyframes fade-in {
+				from { opacity: 0; }
+				to { opacity: 1; }
+			}
+
+			@keyframes fade-out {
+				from { opacity: 1; }
+				to { opacity: 0; }
+			}
+
+			/* Typography utilities */
+			.prose {
+				max-width: 65ch;
+			}
+
+			.prose p {
+				margin-bottom: 1.5em;
+			}
+
+			.prose a {
+				color: #60A5FA;
+				text-decoration: underline;
+				text-decoration-thickness: 1px;
+				text-underline-offset: 2px;
+				transition: color 0.2s;
+			}
+
+			.prose a:hover {
+				color: #93C5FD;
+			}
+
+			/* Improved link underlines */
+			.fancy-link {
+				background-image: linear-gradient(currentColor, currentColor);
+				background-position: 0% 100%;
+				background-repeat: no-repeat;
+				background-size: 0% 1px;
+				transition: background-size 0.3s;
+			}
+
+			.fancy-link:hover {
+				background-size: 100% 1px;
+			}
+
+			/* Text balance for better headlines */
+			.balanced-text {
+				text-wrap: balance;
+			}
+		</style>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+		<ViewTransitions />
 	</head>
-	<body class="bg-zinc-900 text-white flex flex-col font-serif">
+	<body class="bg-zinc-900 text-white antialiased flex flex-col font-serif">
 		<Header />
-		<section class="flex-1 snap-y">
+		<main class="flex-1" transition:animate="slide">
 			<slot />
-		</section>
+		</main>
 		<Footer />
 	</body>
 </html>

@@ -1,31 +1,39 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Rafael Vidal">
-	<main>
-		This is the about page
-		<ul>
-			<li class="list-disc">Software Engineer</li>
-			<li class="list-disc">Consultant</li>
-		</ul>
-
-		<div class="m-4 border-2 p-4">
-			<h2>Languages</h2>
-			<ul>
-				<li class="list-disc">PHP</li>
-				<li class="list-disc">Javacript</li>
-			</ul>
-		</div>
-
-		<div class="m-4 border-2 p-4">
-			<h2>Frameworks</h2>
-			<ul>
-				<li class="list-disc">Laravel</li>
-				<li class="list-disc">Vue / Nuxt</li>
-				<li class="list-disc">React / Next</li>
-				<li class="list-disc">React Native</li>
-			</ul>
+<Layout title="About">
+	<main class="container mx-auto px-4 py-16">
+		<div class="max-w-3xl">
+			<h1 class="text-display font-display mb-8">About Me</h1>
+			
+			<div class="prose text-gray-300">
+				<p class="text-body-lg">
+					I'm a software engineer with a passion for building elegant solutions 
+					to complex problems.
+				</p>
+				
+				<h2 class="text-heading font-display text-white mt-12 mb-6">
+					Technical Expertise
+				</h2>
+				
+				<div class="grid md:grid-cols-2 gap-8">
+					<div>
+						<h3 class="text-subheading mb-4 text-white">Languages</h3>
+						<ul class="space-y-2">
+							<li class="flex items-center">
+								<span class="text-body">PHP</span>
+								<span class="text-tiny ml-2 px-2 py-0.5 bg-gray-800 rounded-full">
+									Advanced
+								</span>
+							</li>
+							<!-- More languages... -->
+						</ul>
+					</div>
+					
+					<!-- More sections... -->
+				</div>
+			</div>
 		</div>
 	</main>
 </Layout>

@@ -1,14 +1,59 @@
 ---
-import Layout from "../layouts/Layout.astro"
----
+import Layout from "../layouts/Layout.astro";
+
+const projects = [
+  {
+    title: "Goodest.pet",
+    description: "Pet Health Tool SaaS - Track your pet's health, medications, and appointments.",
+    url: "//goodest.pet",
+    status: "Active"
+  },
+  {
+    title: "xgp.gg",
+    description: "Gamepass catalogue - Browse and track Xbox Game Pass titles.",
+    url: "//xgp.gg",
+    status: "Active"
+  },
+  {
+    title: "amrap.me",
+    description: "Crossfit / fitness tracker - Log workouts and track your progress.",
+    url: "//amrap.me",
+    status: "Active"
+  }
+];---
 
 <Layout title="Projects">
-	<main>
-		Ongoing projects:
-		<ul>
-			<li><a href="//goodest.pet">Goodest.pet</a> - Pet Health Tool SaaS</li>
-			<li><a href="//xgp.gg">xgp.gg</a> - Gamepass catalogue</li>
-			<li><a href="//amrap.me">amrap.me</a> - Crossfit / fitness tracker</li>
-		</ul>
+	<main class="container mx-auto px-4 py-16">
+		<div class="max-w-3xl mb-16 fade-in">
+			<h1 class="text-4xl font-display tracking-tight mb-6">Featured Projects</h1>
+			<p class="text-xl text-gray-400">
+				A collection of my recent work and ongoing projects
+			</p>
+		</div>
+
+		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 fade-in">
+			{projects.map(project => (
+				<div class="bg-gray-800/50 rounded-lg p-8 hover:bg-gray-800/70 transition-colors">
+					<span class="text-sm uppercase tracking-wider text-gray-400 mb-4 block">
+						{project.status}
+					</span>
+					<h3 class="text-2xl font-display tracking-tight mb-3">
+						{project.title}
+					</h3>
+					<p class="text-gray-400 mb-6">
+						{project.description}
+					</p>
+					<a 
+						href={project.url}
+						class="text-blue-400 hover:text-blue-300 transition-colors inline-flex items-center"
+					>
+						Visit Site 
+						<svg class="w-4 h-4 ml-2" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+						</svg>
+					</a>
+				</div>
+			))}
+		</div>
 	</main>
 </Layout>

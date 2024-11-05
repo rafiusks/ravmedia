@@ -2,30 +2,45 @@
 
 ---
 
-<header class="container mx-auto py-12 flex justify-between">
-	<div class="text-white bg-gray-700 p-5">
-		<div class="flex">
-			<div class="mr-4">
-				<image
+<header class="container mx-auto py-8 px-4" transition:persist>
+	<div class="flex justify-between items-center">
+		<div class="bg-gray-800/50 p-6 rounded-lg">
+			<div class="flex items-center gap-6">
+				<img
 					alt="This is me, Raf"
-					placeholder="dominantColor"
 					src="/src/img/39D2D69B-1CA5-44C5-9B2A-4AE4017A3DED.jpg"
-					width={100}
+					width={60}
+					height={60}
+					class="rounded-full"
 				/>
-			</div>
-			<div class="flex-col">
-				<h2 class="text-white text-4xl pb-2">Rafael Vidal</h2>
-				<p>Software Engineer, Consultant, not a Designer</p>
+				<div>
+					<h2 class="font-display text-heading-3 mb-1">Rafael Vidal</h2>
+					<p class="text-small text-gray-400">Software Engineer & Consultant</p>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="flex-1 ml-20 text-right">
-		<a href="/" class="p-3">Home</a>
-		<span class="mr-3"></span>
-		<a href="/about" class="p-3">About</a>
-		<span class="mr-3"></span>
-		<a href="/projects" class="p-3">Projects</a>
-		<span class="mr-3"></span>
-		<a href="/contact" class="p-3">Contact</a>
+
+		<nav class="flex items-center gap-2">
+			<a href="/" class="text-small font-medium px-4 py-2 rounded-lg 
+						hover:bg-gray-800/50 transition-colors"
+				data-astro-prefetch>
+				Home
+			</a>
+			<a href="/about" class="text-small font-medium px-4 py-2 rounded-lg 
+								hover:bg-gray-800/50 transition-colors"
+				data-astro-prefetch>
+				About
+			</a>
+			<a href="/projects" class="text-small font-medium px-4 py-2 rounded-lg 
+								hover:bg-gray-800/50 transition-colors"
+				data-astro-prefetch>
+				Projects
+			</a>
+			<a href="/contact" class="text-small font-medium px-4 py-2 rounded-lg 
+								hover:bg-gray-800/50 transition-colors"
+				data-astro-prefetch>
+				Contact
+			</a>
+		</nav>
 	</div>
 </header>

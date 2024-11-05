@@ -11,11 +11,13 @@
 		"astro": "astro"
 	},
 	"dependencies": {
+		"@astrojs/prefetch": "^0.4.1",
 		"@astrojs/react": "^3.6.2",
 		"@astrojs/tailwind": "^5.1.2",
 		"@types/react": "^18.3.12",
 		"@types/react-dom": "^18.3.1",
 		"astro": "^5.0.0-beta.6",
+		"framer-motion": "^11.11.11",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"tailwindcss": "^3.1.8"

@@ -1,0 +1,73 @@
+---
+interface Props {
+	as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+	variant?:
+		| "default"
+		| "gradient"
+		| "subtle"
+		| "decorated"
+		| "underlined"
+		| "accented"
+		| "gradient-blue"
+		| "gradient-purple"
+		| "boxed"
+		| "outlined"
+		| "with-badge";
+	size?: "display-xl" | "display-lg" | "display" | "heading" | "subheading";
+	align?: "left" | "center" | "right";
+	class?: string;
+}
+
+const {
+	as: Tag = "h2",
+	variant = "default",
+	size = "heading",
+	align = "left",
+	class: className = "",
+} = Astro.props;
+
+const variants = {
+	default: "text-white",
+	gradient:
+		"bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent",
+	subtle: "text-gray-300",
+	decorated: "border-l-4 border-blue-500 pl-4",
+	underlined: "border-b-2 border-gray-700 pb-4",
+	accented:
+		'inline-flex items-center gap-3 before:content-[""] before:h-px before:w-8 before:bg-blue-500',
+	"gradient-blue":
+		"bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent",
+	"gradient-purple":
+		"bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent",
+	boxed: "inline-block bg-gray-800 px-4 py-2 rounded-lg",
+	outlined: "border-2 border-gray-700 px-4 py-2 rounded-lg",
+	"with-badge":
+		'inline-flex items-center gap-3 after:content-[""] after:px-2 after:py-1 after:text-tiny after:bg-blue-500/10 after:text-blue-400 after:rounded-full after:content-[attr(data-badge)]',
+};
+
+const alignment = {
+	left: "text-left",
+	center: "text-center",
+	right: "text-right",
+};
+---
+
+<Tag 
+  class:list={[
+    'font-display',
+    `text-${size}`,
+    variants[variant],
+    alignment[align],
+    className
+  ]}
+>
+  <slot />
+</Tag>
+
+<style>
+  /* Optional: Add specific styles for gradient text for better browser support */
+  .gradient-text {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style> 
