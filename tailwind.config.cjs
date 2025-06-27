@@ -2,64 +2,68 @@
 module.exports = {
 	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
 	theme: {
-		extend: {
-			colors: {
-				primary: {
-					50: "#f0f9ff",
-					100: "#e0f2fe",
-					200: "#bae6fd",
-					300: "#7dd3fc",
-					400: "#38bdf8",
-					500: "#0ea5e9",
-					600: "#0284c7",
-					700: "#0369a1",
-					800: "#075985",
-					900: "#0c4a6e",
-				},
-				gray: {
-					50: "#f9fafb",
-					100: "#f3f4f6",
-					200: "#e5e7eb",
-					300: "#d1d5db",
-					400: "#9ca3af",
-					500: "#6b7280",
-					600: "#4b5563",
-					700: "#374151",
-					800: "#1f2937",
-					900: "#111827",
-				},
+		screens: {
+			md: "768px",
+		},
+		colors: {
+			transparent: "transparent",
+			current: "currentColor",
+			white: "#ffffff",
+			gray: {
+				50: "#f9fafb",
+				100: "#f3f4f6",
+				600: "#4b5563",
+				900: "#111827",
 			},
-			fontFamily: {
-				sans: ["Inter", "system-ui", "-apple-system", "sans-serif"],
-				display: ["Manrope", "system-ui", "-apple-system", "sans-serif"],
+			primary: {
+				50: "#f0f9ff",
+				100: "#e0f2fe",
+				200: "#bae6fd",
+				300: "#7dd3fc",
+				400: "#38bdf8",
+				500: "#0ea5e9",
+				600: "#0284c7",
+				700: "#0369a1",
+				800: "#075985",
+				900: "#0c4a6e",
+				950: "#082f49",
 			},
-			fontSize: {
-				"display-xl": [
-					"clamp(3.5rem, 5vw, 4.5rem)",
-					{ lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" },
-				],
-				"display-lg": [
-					"clamp(2.5rem, 4vw, 3.75rem)",
-					{ lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" },
-				],
-				display: [
-					"clamp(2rem, 3vw, 2.5rem)",
-					{ lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "600" },
-				],
-				heading: [
-					"clamp(1.5rem, 2vw, 1.875rem)",
-					{ lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "500" },
-				],
-				subheading: [
-					"clamp(1.25rem, 1.5vw, 1.5rem)",
-					{ lineHeight: "1.3", letterSpacing: "-0.01em", fontWeight: "500" },
-				],
-				"body-lg": ["1.125rem", { lineHeight: "1.75", fontWeight: "400" }],
-				body: ["1rem", { lineHeight: "1.75", fontWeight: "400" }],
-				small: ["0.875rem", { lineHeight: "1.5", fontWeight: "400" }],
-				tiny: ["0.75rem", { lineHeight: "1.5", fontWeight: "500" }],
+			accent: {
+				50: "#f5f3ff",
+				100: "#ede9fe",
+				200: "#ddd6fe",
+				300: "#c4b5fd",
+				400: "#a78bfa",
+				500: "#8b5cf6",
+				600: "#7c3aed",
+				700: "#6d28d9",
+				800: "#5b21b6",
+				900: "#4c1d95",
+				950: "#2e1065",
 			},
 		},
+		fontFamily: {
+			display: ["var(--font-display)", "system-ui", "sans-serif"],
+		},
+		fontSize: {
+			xs: ["0.75rem", "1rem"],
+			sm: ["0.875rem", "1.25rem"],
+			lg: ["1.125rem", "1.75rem"],
+		},
+	},
+	corePlugins: {
+		container: true,
+		animation: false,
+		keyframes: false,
+		float: false,
+		clear: false,
+		skew: false,
+		scale: false,
+		rotate: false,
 	},
 	plugins: [],
+	// Enable additional optimizations
+	future: {
+		hoverOnlyWhenSupported: true,
+	},
 };

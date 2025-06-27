@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+// Removed framer-motion import as it's not being used
 
 function Footer() {
 	return (

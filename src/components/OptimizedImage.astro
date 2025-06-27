@@ -1,0 +1,72 @@
+import { getImage } from "astro:assets";
+
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: "lazy" | "eager";
+  sizes?: string;
+  quality?: number;
+}
+
+const {
+  src,
+  alt,
+  width = 800,
+  height = 600,
+  class: className,
+  loading = "lazy",
+  sizes = "(min-width: 768px) 50vw, 100vw",
+  quality = 80,
+} = Astro.props;
+
+// Generate optimized images if it's a local asset
+let optimizedSrc = src;
+let srcSet: string | undefined;
+
+// Check if it's a local asset (starts with / but not //)
+if (src.startsWith('/') && !src.startsWith('//')) {
+  try {
+    // For now, use the original src since we have SVG placeholders
+    // In production, you'd want to use actual images here
+    optimizedSrc = src;
+  } catch (error) {
+    // Fallback to original src if optimization fails
+    optimizedSrc = src;
+  }
+}
+
+<img
+  src={optimizedSrc}
+  alt={alt}
+  width={width}
+  height={height}
+  loading={loading}
+  decoding="async"
+  sizes={sizes}
+  class:list={[
+    'transition-opacity duration-300',
+    className
+  ]}
+  style="aspect-ratio: auto;"
+/>
+
+<style>
+  img {
+    /* Prevent layout shift while loading */
+    background-color: #f3f4f6;
+  }
+  
+  img[loading="lazy"] {
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+</style> 

@@ -1,16 +1,20 @@
 ---
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.jsx";
+import StructuredData from "../components/StructuredData.astro";
 
 interface Props {
 	title: string;
 	description?: string;
 	image?: string;
+	structuredDataType?: "organization" | "website" | "service";
 }
 
 const {
 	title,
 	description = "RavMedia - Digital Solutions",
 	image = "/social-image.jpg",
+	structuredDataType = "organization",
 } = Astro.props;
 
 // Only create canonical URL if site is defined
@@ -52,11 +56,15 @@ const canonicalURL = Astro.site
 
 		<!-- Preload critical assets -->
 		<link rel="preload" href="/logo.jpg" as="image" />
+		
+		<!-- Structured Data -->
+		<StructuredData type={structuredDataType} page={Astro.url.pathname} />
 	</head>
 	<body class="h-full">
 		<Header />
 		<main id="main">
 			<slot />
 		</main>
+		<Footer />
 	</body>
 </html>

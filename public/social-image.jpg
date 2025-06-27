@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f8fafc"/>
+  <rect x="50" y="50" width="1100" height="530" rx="20" fill="white" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="600" y="280" text-anchor="middle" fill="#0f172a" font-family="system-ui" font-weight="bold" font-size="48">RavMedia</text>
+  <text x="600" y="340" text-anchor="middle" fill="#64748b" font-family="system-ui" font-size="24">Enterprise Software Solutions</text>
+</svg> 

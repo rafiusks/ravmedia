@@ -1,39 +1,103 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Button from "../components/ui/Button.astro";
 ---
 
-<Layout title="About">
-	<main class="container mx-auto px-4 py-16">
-		<div class="max-w-3xl">
-			<h1 class="text-display font-display mb-8">About Me</h1>
-			
-			<div class="prose text-gray-300">
-				<p class="text-body-lg">
-					I'm a software engineer with a passion for building elegant solutions 
-					to complex problems.
-				</p>
-				
-				<h2 class="text-heading font-display text-white mt-12 mb-6">
-					Technical Expertise
-				</h2>
-				
-				<div class="grid md:grid-cols-2 gap-8">
-					<div>
-						<h3 class="text-subheading mb-4 text-white">Languages</h3>
-						<ul class="space-y-2">
-							<li class="flex items-center">
-								<span class="text-body">PHP</span>
-								<span class="text-tiny ml-2 px-2 py-0.5 bg-gray-800 rounded-full">
-									Advanced
-								</span>
-							</li>
-							<!-- More languages... -->
-						</ul>
-					</div>
-					
-					<!-- More sections... -->
+<Layout 
+	title="About - RavMedia" 
+	description="Learn about RavMedia's mission, values, and expertise in enterprise software solutions."
+>
+	<main class="bg-white">
+		<!-- Hero Section -->
+		<section class="bg-gradient-to-b from-gray-50 to-white py-16">
+			<div class="container mx-auto px-4">
+				<div class="max-w-3xl mx-auto text-center">
+					<h1 class="font-display text-4xl md:text-5xl font-semibold tracking-tight text-gray-900 mb-4">
+						About RavMedia
+					</h1>
+					<p class="text-xl text-gray-600">
+						Transforming businesses through innovative software solutions
+					</p>
 				</div>
 			</div>
-		</div>
+		</section>
+
+		<!-- Mission Section -->
+		<section class="py-16">
+			<div class="container mx-auto px-4">
+				<div class="max-w-4xl mx-auto">
+					<div class="grid md:grid-cols-2 gap-12 items-center">
+						<div>
+							<h2 class="font-display text-3xl font-semibold text-gray-900 mb-6">
+								Our Mission
+							</h2>
+							<p class="text-lg text-gray-600 mb-6">
+								We believe that technology should empower businesses, not complicate them. 
+								Our mission is to help enterprises modernize their systems and processes 
+								through thoughtful, scalable software solutions.
+							</p>
+							<p class="text-lg text-gray-600">
+								With years of experience in enterprise software development, we understand 
+								the unique challenges that businesses face in today's digital landscape.
+							</p>
+						</div>
+						<div class="bg-primary-50 p-8 rounded-xl">
+							<h3 class="font-display text-xl font-semibold text-gray-900 mb-4">Our Values</h3>
+							<ul class="space-y-3">
+								<li class="flex items-start">
+									<span class="text-primary-600 mr-3">✓</span>
+									<span>Quality-first approach to development</span>
+								</li>
+								<li class="flex items-start">
+									<span class="text-primary-600 mr-3">✓</span>
+									<span>Transparent communication</span>
+								</li>
+								<li class="flex items-start">
+									<span class="text-primary-600 mr-3">✓</span>
+									<span>Long-term partnership mindset</span>
+								</li>
+								<li class="flex items-start">
+									<span class="text-primary-600 mr-3">✓</span>
+									<span>Continuous learning and improvement</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Experience Section -->
+		<section class="py-16 bg-gray-50">
+			<div class="container mx-auto px-4">
+				<div class="max-w-4xl mx-auto text-center">
+					<h2 class="font-display text-3xl font-semibold text-gray-900 mb-8">
+						Proven Experience
+					</h2>
+					<div class="grid md:grid-cols-3 gap-8 mb-12">
+						<div class="bg-white p-6 rounded-lg shadow-sm">
+							<div class="text-3xl font-display font-bold text-primary-600 mb-2">10+</div>
+							<div class="text-gray-600">Years in Business</div>
+						</div>
+						<div class="bg-white p-6 rounded-lg shadow-sm">
+							<div class="text-3xl font-display font-bold text-primary-600 mb-2">50+</div>
+							<div class="text-gray-600">Projects Delivered</div>
+						</div>
+						<div class="bg-white p-6 rounded-lg shadow-sm">
+							<div class="text-3xl font-display font-bold text-primary-600 mb-2">100%</div>
+							<div class="text-gray-600">Client Satisfaction</div>
+						</div>
+					</div>
+					<p class="text-lg text-gray-600 mb-8">
+						From startups to Fortune 500 companies, we've helped organizations 
+						across industries modernize their technology infrastructure and 
+						achieve their digital transformation goals.
+					</p>
+					<Button href="/contact" variant="primary" size="lg">
+						Start Your Project
+					</Button>
+				</div>
+			</div>
+		</section>
 	</main>
 </Layout>

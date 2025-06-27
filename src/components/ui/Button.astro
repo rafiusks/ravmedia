@@ -1,11 +1,16 @@
 ---
-interface Props {
-	href?: string;
-	variant?: "primary" | "accent" | "outline";
-	size?: "sm" | "md" | "lg";
+import type { ButtonProps } from "../../types";
+
+interface Props extends ButtonProps {
+	class?: string;
 }
 
-const { href, variant = "primary", size = "md" } = Astro.props;
+const {
+	href,
+	variant = "primary",
+	size = "md",
+	class: className,
+} = Astro.props;
 
 const variants = {
 	primary:
@@ -29,7 +34,8 @@ const sizes = {
 		'transition-colors duration-200 ease-in-out',
 		'focus:outline-none focus:ring-2 focus:ring-offset-2',
 		variants[variant],
-		sizes[size]
+		sizes[size],
+		className
 	]}
 >
 	<slot />

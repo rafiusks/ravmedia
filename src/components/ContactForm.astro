@@ -1,0 +1,333 @@
+---
+// Contact form component with client-side validation
+---
+
+<form 
+  id="contact-form" 
+  class="bg-white rounded-xl border border-gray-200 p-8 shadow-sm"
+  novalidate
+>
+  <h3 class="font-display text-2xl font-semibold text-gray-900 mb-6">
+    Send us a message
+  </h3>
+  
+  <div class="grid md:grid-cols-2 gap-6 mb-6">
+    <div>
+      <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">
+        First Name *
+      </label>
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        required
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+        aria-describedby="firstName-error"
+      />
+      <div id="firstName-error" class="text-red-600 text-sm mt-1 hidden" role="alert"></div>
+    </div>
+    
+    <div>
+      <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">
+        Last Name *
+      </label>
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        required
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+        aria-describedby="lastName-error"
+      />
+      <div id="lastName-error" class="text-red-600 text-sm mt-1 hidden" role="alert"></div>
+    </div>
+  </div>
+  
+  <div class="mb-6">
+    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+      Email Address *
+    </label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+      aria-describedby="email-error"
+    />
+    <div id="email-error" class="text-red-600 text-sm mt-1 hidden" role="alert"></div>
+  </div>
+  
+  <div class="mb-6">
+    <label for="company" class="block text-sm font-medium text-gray-700 mb-2">
+      Company
+    </label>
+    <input
+      type="text"
+      id="company"
+      name="company"
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+    />
+  </div>
+  
+  <div class="mb-6">
+    <label for="projectType" class="block text-sm font-medium text-gray-700 mb-2">
+      Project Type
+    </label>
+    <select
+      id="projectType"
+      name="projectType"
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+    >
+      <option value="">Select a project type</option>
+      <option value="legacy-modernization">Legacy System Modernization</option>
+      <option value="cloud-development">Cloud-Native Development</option>
+      <option value="data-engineering">Data Engineering & Analytics</option>
+      <option value="api-integration">API & Integration Services</option>
+      <option value="devops">DevOps & Automation</option>
+      <option value="blockchain">Blockchain & DLT Solutions</option>
+      <option value="consultation">General Consultation</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+  
+  <div class="mb-6">
+    <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
+      Message *
+    </label>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      required
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors resize-vertical"
+      placeholder="Tell us about your project requirements..."
+      aria-describedby="message-error"
+    ></textarea>
+    <div id="message-error" class="text-red-600 text-sm mt-1 hidden" role="alert"></div>
+  </div>
+  
+  <div class="mb-6">
+    <label class="flex items-start">
+      <input
+        type="checkbox"
+        id="privacy"
+        name="privacy"
+        required
+        class="mt-1 mr-3 h-4 w-4 text-primary-600 border-gray-300 rounded focus:ring-2 focus:ring-primary-500"
+        aria-describedby="privacy-error"
+      />
+      <span class="text-sm text-gray-600">
+        I agree to the processing of my personal data for the purpose of handling this inquiry. *
+      </span>
+    </label>
+    <div id="privacy-error" class="text-red-600 text-sm mt-1 hidden" role="alert"></div>
+  </div>
+  
+  <div class="flex flex-col sm:flex-row gap-4">
+    <button
+      type="submit"
+      class="flex-1 bg-primary-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      id="submit-btn"
+    >
+      <span id="submit-text">Send Message</span>
+      <span id="submit-loading" class="hidden">
+        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Sending...
+      </span>
+    </button>
+    <button
+      type="button"
+      class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
+      id="reset-btn"
+    >
+      Reset
+    </button>
+  </div>
+  
+  <!-- Success Message -->
+  <div id="success-message" class="hidden mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+    <div class="flex">
+      <svg class="w-5 h-5 text-green-400 mr-3 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+      </svg>
+      <div>
+        <h4 class="text-green-800 font-medium">Message sent successfully!</h4>
+        <p class="text-green-700 text-sm mt-1">Thank you for reaching out. We'll get back to you within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Error Message -->
+  <div id="error-message" class="hidden mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+    <div class="flex">
+      <svg class="w-5 h-5 text-red-400 mr-3 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+      </svg>
+      <div>
+        <h4 class="text-red-800 font-medium">Failed to send message</h4>
+        <p class="text-red-700 text-sm mt-1">Please try again or contact us directly at <a href="mailto:contact@ravmedia.dev" class="underline">contact@ravmedia.dev</a></p>
+      </div>
+    </div>
+  </div>
+</form>
+
+<script>
+  // Form validation and submission
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+    const submitText = document.getElementById('submit-text') as HTMLElement;
+    const submitLoading = document.getElementById('submit-loading') as HTMLElement;
+    const successMessage = document.getElementById('success-message') as HTMLElement;
+    const errorMessage = document.getElementById('error-message') as HTMLElement;
+    const resetBtn = document.getElementById('reset-btn') as HTMLButtonElement;
+    
+    // Validation rules
+    const validators = {
+      firstName: (value: string) => value.trim().length >= 2 ? null : 'First name must be at least 2 characters',
+      lastName: (value: string) => value.trim().length >= 2 ? null : 'Last name must be at least 2 characters',
+      email: (value: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(value.trim()) ? null : 'Please enter a valid email address';
+      },
+      message: (value: string) => value.trim().length >= 10 ? null : 'Message must be at least 10 characters',
+      privacy: (checked: boolean) => checked ? null : 'You must agree to the privacy policy'
+    };
+    
+    // Show error message
+    function showError(fieldName: string, message: string) {
+      const errorElement = document.getElementById(`${fieldName}-error`);
+      const inputElement = document.getElementById(fieldName);
+      if (errorElement && inputElement) {
+        errorElement.textContent = message;
+        errorElement.classList.remove('hidden');
+        inputElement.classList.add('border-red-500');
+        inputElement.setAttribute('aria-invalid', 'true');
+      }
+    }
+    
+    // Clear error message
+    function clearError(fieldName: string) {
+      const errorElement = document.getElementById(`${fieldName}-error`);
+      const inputElement = document.getElementById(fieldName);
+      if (errorElement && inputElement) {
+        errorElement.classList.add('hidden');
+        inputElement.classList.remove('border-red-500');
+        inputElement.removeAttribute('aria-invalid');
+      }
+    }
+    
+         // Validate field
+     function validateField(fieldName: string, value: string | boolean) {
+       clearError(fieldName);
+       const validator = validators[fieldName as keyof typeof validators];
+       if (validator) {
+         const error = (validator as any)(value);
+         if (error) {
+           showError(fieldName, error);
+           return false;
+         }
+       }
+       return true;
+     }
+    
+    // Real-time validation
+    ['firstName', 'lastName', 'email', 'message'].forEach(fieldName => {
+      const element = document.getElementById(fieldName) as HTMLInputElement | HTMLTextAreaElement;
+      if (element) {
+        element.addEventListener('blur', () => {
+          validateField(fieldName, element.value);
+        });
+        element.addEventListener('input', () => {
+          clearError(fieldName);
+        });
+      }
+    });
+    
+    const privacyElement = document.getElementById('privacy') as HTMLInputElement;
+    if (privacyElement) {
+      privacyElement.addEventListener('change', () => {
+        validateField('privacy', privacyElement.checked);
+      });
+    }
+    
+    // Form submission
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Hide previous messages
+      successMessage.classList.add('hidden');
+      errorMessage.classList.add('hidden');
+      
+      const formData = new FormData(form);
+      const data = {
+        firstName: formData.get('firstName') as string,
+        lastName: formData.get('lastName') as string,
+        email: formData.get('email') as string,
+        company: formData.get('company') as string,
+        projectType: formData.get('projectType') as string,
+        message: formData.get('message') as string,
+        privacy: privacyElement.checked
+      };
+      
+      // Validate all fields
+      let isValid = true;
+      isValid = validateField('firstName', data.firstName) && isValid;
+      isValid = validateField('lastName', data.lastName) && isValid;
+      isValid = validateField('email', data.email) && isValid;
+      isValid = validateField('message', data.message) && isValid;
+      isValid = validateField('privacy', data.privacy) && isValid;
+      
+      if (!isValid) {
+        return;
+      }
+      
+      // Show loading state
+      submitBtn.disabled = true;
+      submitText.classList.add('hidden');
+      submitLoading.classList.remove('hidden');
+      
+      try {
+        // Simulate form submission (replace with actual endpoint)
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // Show success message
+        successMessage.classList.remove('hidden');
+        form.reset();
+        
+                 // Track conversion event (if analytics is set up)
+         if (typeof (window as any).gtag !== 'undefined') {
+           (window as any).gtag('event', 'form_submit', {
+             event_category: 'Contact',
+             event_label: 'Contact Form'
+           });
+         }
+        
+      } catch (error) {
+        // Show error message
+        errorMessage.classList.remove('hidden');
+      } finally {
+        // Reset button state
+        submitBtn.disabled = false;
+        submitText.classList.remove('hidden');
+        submitLoading.classList.add('hidden');
+      }
+    });
+    
+    // Reset form
+    resetBtn.addEventListener('click', function() {
+      form.reset();
+      successMessage.classList.add('hidden');
+      errorMessage.classList.add('hidden');
+      
+      // Clear all errors
+      Object.keys(validators).forEach(fieldName => {
+        clearError(fieldName);
+      });
+    });
+  });
+</script> 

@@ -5,7 +5,11 @@ import Button from "../components/ui/Button.astro";
 import { services } from "../data/services.ts";
 ---
 
-<Layout title="RavMedia - Enterprise Software Solutions">
+<Layout 
+  title="RavMedia - Enterprise Software Solutions" 
+  description="Transform your business with modern software solutions. We help enterprises build scalable, efficient, and future-proof digital solutions."
+  structuredDataType="website"
+>
 	<main>
 		<!-- Hero Section -->
 		<section class="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white">
@@ -130,10 +134,10 @@ import { services } from "../data/services.ts";
 
 				<div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
 					<div class="flex items-center justify-center p-4">
-						<img src="/tech/aws.svg" alt="AWS" class="h-12 opacity-75 hover:opacity-100 transition-opacity" />
+						<img src="/tech/aws.svg" alt="Amazon Web Services - Cloud computing platform" class="h-12 opacity-75 hover:opacity-100 transition-opacity" loading="lazy" />
 					</div>
 					<div class="flex items-center justify-center p-4">
-						<img src="/tech/azure.svg" alt="Azure" class="h-12 opacity-75 hover:opacity-100 transition-opacity" />
+						<img src="/tech/azure.svg" alt="Microsoft Azure - Cloud computing services" class="h-12 opacity-75 hover:opacity-100 transition-opacity" loading="lazy" />
 					</div>
 					<!-- Add more technology logos -->
 				</div>
