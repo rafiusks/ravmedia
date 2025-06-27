@@ -22,5 +22,5 @@ export default defineConfig({
 			},
 		},
 	},
-	site: "https://yourdomain.com", // Add your site URL here
+	site: "http://localhost:4321", // Add your site URL here
 });

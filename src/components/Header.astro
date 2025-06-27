@@ -88,7 +88,11 @@ const navItems = [
         <h2 class="font-display text-lg font-semibold text-gray-900">RavMedia</h2>
       </a>
       
-      <a href="/contact" class="text-xs font-medium px-3 py-1.5 bg-primary-50 text-primary-600 rounded-full hover:bg-primary-100">
+      <a 
+        href="/contact" 
+        class="text-xs font-medium px-3 py-1.5 bg-accent-50 text-accent-600 rounded-full 
+               hover:bg-accent-100 transition-colors"
+      >
         Get in Touch
       </a>
     </div>
@@ -115,8 +119,8 @@ const navItems = [
             
             {isActive(path) && (
               <>
-                <div class="absolute -inset-3 bg-primary-50 rounded-xl -z-10"></div>
-                <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary-600"></div>
+                <div class="absolute -inset-3 bg-accent-50 rounded-xl -z-10"></div>
+                <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-accent-600"></div>
               </>
             )}
           </div>

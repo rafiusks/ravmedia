@@ -2,47 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/ui/Button.astro";
 
-const services = [
-	{
-		title: "Custom Enterprise Software",
-		description:
-			"Tailored solutions that align with your business processes and scale with your growth.",
-		icon: "💻",
-		category: "Development",
-		deliverables: [
-			"Scalable Architecture Design",
-			"Custom Software Development",
-			"Integration Services",
-			"Maintenance & Support",
-		],
-	},
-	{
-		title: "Digital Transformation",
-		description:
-			"Strategic implementation of modern solutions to revolutionize your business operations.",
-		icon: "🚀",
-		category: "Strategy",
-		deliverables: [
-			"Digital Roadmap",
-			"Process Optimization",
-			"Technology Migration",
-			"Change Management",
-		],
-	},
-	{
-		title: "Technical Consulting",
-		description:
-			"Expert guidance for your technology infrastructure and strategic decisions.",
-		icon: "💡",
-		category: "Consulting",
-		deliverables: [
-			"Technical Assessment",
-			"Architecture Review",
-			"Security Audit",
-			"Performance Analysis",
-		],
-	},
-];
+import { services } from "../data/services.ts";
 ---
 
 <Layout title="Services - RavMedia">

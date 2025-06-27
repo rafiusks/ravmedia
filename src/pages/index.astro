@@ -2,26 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/ui/Button.astro";
 
-const services = [
-	{
-		title: "Custom Enterprise Software",
-		description:
-			"Tailored solutions that align with your business processes and scale with your growth.",
-		icon: "💻",
-	},
-	{
-		title: "Digital Transformation",
-		description:
-			"Guide your business through technological evolution with strategic implementation of modern solutions.",
-		icon: "🚀",
-	},
-	{
-		title: "Technical Consulting",
-		description:
-			"Strategic guidance to help you make informed decisions about your technology infrastructure.",
-		icon: "💡",
-	},
-];
+import { services } from "../data/services.ts";
 ---
 
 <Layout title="RavMedia - Enterprise Software Solutions">
@@ -43,7 +24,7 @@ const services = [
 						<Button href="/contact" variant="primary" size="lg">
 							Schedule a Consultation
 						</Button>
-						<Button href="/services" variant="outline" size="lg">
+						<Button href="/services" variant="accent" size="lg">
 							Explore Our Services
 						</Button>
 					</div>
